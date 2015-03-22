@@ -6,6 +6,7 @@ import java.security.NoSuchAlgorithmException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.rg.spring.db.CosyDAO;
 import com.rg.spring.db.User;
@@ -16,6 +17,7 @@ public class CosyService {
 	@Autowired
 	private CosyDAO dao;
 	
+	@Transactional
 	public Integer createUser() throws NoSuchAlgorithmException {
 		User u = new User();
 		u.setName("Richy");
