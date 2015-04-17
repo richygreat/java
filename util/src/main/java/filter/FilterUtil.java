@@ -2,6 +2,9 @@ package filter;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.LinkedList;
 import java.util.Vector;
 
 import bean.User;
@@ -33,11 +36,29 @@ public class FilterUtil<T> {
 
 	public static <T> Collection<T> filter(Collection<T> target,
 			IPredicate<T> predicate) {
-		Collection<T> result = new ArrayList<T>();
+		Collection<T> result = getCollectionInstance(target);
 		for (T element : target) {
 			if (predicate.apply(element)) {
 				result.add(element);
 			}
+		}
+		return result;
+	}
+
+	private static <T> Collection<T> getCollectionInstance(Collection<T> target) {
+		Collection<T> result;
+		if(Vector.class.equals(target.getClass())) {
+			result = new Vector<T>();
+		}else if(ArrayList.class.equals(target.getClass())) {
+			result = new ArrayList<T>();
+		}else if(HashSet.class.equals(target.getClass())) {
+			result = new HashSet<T>();
+		}else if(LinkedHashSet.class.equals(target.getClass())) {
+			result = new LinkedHashSet<T>();
+		}else if(LinkedList.class.equals(target.getClass())) {
+			result = new LinkedList<T>();
+		}else {
+			result = new ArrayList<T>();
 		}
 		return result;
 	}
