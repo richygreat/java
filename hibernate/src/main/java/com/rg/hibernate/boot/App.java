@@ -6,27 +6,32 @@ import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.core.env.AbstractEnvironment;
 
 import com.rg.hibernate.entity.User;
 
 public class App {
-	private static final Logger logger = Logger.getLogger(App.class);
+	private static final Logger log = Logger.getLogger(App.class);
+	
+	static {
+		System.setProperty(AbstractEnvironment.ACTIVE_PROFILES_PROPERTY_NAME, "prod");
+	}
 
 	public static void main(String[] args) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
-			logger.debug("Transaction started");
+			log.debug("Transaction started");
 			Criteria cr = session.createCriteria(User.class);
 			@SuppressWarnings("unchecked")
 			List<User> users = cr.list();
-			logger.info(users);
+			log.info(users);
 			tx.commit();
-			logger.debug("Transaction committed");
+			log.debug("Transaction committed");
 		} catch (RuntimeException e) {
 			tx.rollback();
-			logger.error("Exception occured in main class", e);
+			log.error("Exception occured in main class", e);
 		}
 	}
 }

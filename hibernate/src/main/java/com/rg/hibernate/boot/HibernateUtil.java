@@ -1,34 +1,29 @@
 package com.rg.hibernate.boot;
 
-import java.util.Properties;
-
-import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.rg.hibernate.entity.User;
+import com.rg.spring.config.PropertiesUtil;
 
 public class HibernateUtil {
-	private static final Logger logger = Logger.getLogger(HibernateUtil.class);
 	private static final SessionFactory sessionFactory;
 
 	static {
+		@SuppressWarnings("resource")
+		ApplicationContext context = new ClassPathXmlApplicationContext(
+				"application-context.xml");
+		PropertiesUtil props = context.getBean(PropertiesUtil.class);
+		
 		// Create configuration instance
 		Configuration configuration = new Configuration();
 
-		// Create properties file
-		Properties properties = new Properties();
-		try {
-			properties.load(Thread.currentThread().getContextClassLoader()
-					.getResourceAsStream("hibernate.properties"));
-		} catch (Exception e) {
-			logger.error("Place hibernate.properties in classpath", e);
-		}
-
 		// Pass hibernate properties file
-		configuration.setProperties(properties);
+		configuration.setProperties(props);
 
 		// Since version 4.x, service registry is being used
 		ServiceRegistry serviceRegistry = new ServiceRegistryBuilder()
