@@ -19,6 +19,7 @@ public class App {
 			tx = session.beginTransaction();
 			logger.debug("Transaction started");
 			Criteria cr = session.createCriteria(User.class);
+			@SuppressWarnings("unchecked")
 			List<User> users = cr.list();
 			logger.info(users);
 			tx.commit();
