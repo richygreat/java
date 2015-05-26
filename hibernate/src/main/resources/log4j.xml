@@ -12,7 +12,7 @@
 	
 	<!-- Application Loggers -->
 	<logger name="com.rg">
-		<level value="info" />
+		<level value="debug" />
 	</logger>
 
 	<!-- Root Logger -->
