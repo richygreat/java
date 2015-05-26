@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<transaction:WorkProduct xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:transaction="http://btt.cn.ibm.com/transaction" xmi:id="_pJfzUOvkEeS0pta888P3Hg">
-  <globalTag xmi:type="transaction:Taggable" xmi:id="_pJfzUevkEeS0pta888P3Hg"/>
-  <condition xmi:type="transaction:ConditionCategory" xmi:id="_pJfzUuvkEeS0pta888P3Hg"/>
-</transaction:WorkProduct>
