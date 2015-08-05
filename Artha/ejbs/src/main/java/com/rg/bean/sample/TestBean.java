@@ -5,14 +5,14 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.LocalBean;
-import javax.ejb.Singleton;
+import javax.ejb.Stateful;
 
 import org.apache.log4j.Logger;
 
 /**
  * Session Bean implementation class TestBean
  */
-@Singleton
+@Stateful
 @LocalBean
 public class TestBean implements TestBeanRemote, TestBeanLocal {
 	private static final Logger log = Logger.getLogger(TestBean.class);
