@@ -1,0 +1,83 @@
+function addBinder(motherDiv, inputFieldId) {
+	var scntDiv = $('#' + motherDiv);
+	var i = $('#' + motherDiv + ' p').size() + 1;
+
+	$('#addScnt')
+			.live(
+					'click',
+					function() {
+						$(
+								'<p><label><input type="text" id="'
+										+ inputFieldId
+										+ '" size="20" name="'
+										+ inputFieldId
+										+ +i
+										+ '" value="" placeholder="Input Value" /></label> <a href="#" class="remScnt">Remove</a></p>')
+								.appendTo(scntDiv);
+						i++;
+						return false;
+					});
+
+	$('.remScnt').live('click', function() {
+		if (i > 2) {
+			$(this).parents('p').remove();
+			i--;
+		}
+		return false;
+	});
+}
+
+$.fn.serializeObject = function()
+{
+    var o = {};
+    var a = this.serializeArray();
+    $.each(a, function() {
+        if (o[this.name] !== undefined) {
+            if (!o[this.name].push) {
+                o[this.name] = [o[this.name]];
+            }
+            o[this.name].push(this.value || '');
+        } else {
+            o[this.name] = this.value || '';
+        }
+    });
+    return o;
+};
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-1.4.3.min.js"></script>
+<script type="text/javascript" src="js/elementAdder.js"></script>
+<script type='text/javascript'>
+	$(window).load(function() {
+		addBinder('p_scents', 'p_scnt');
+		$(function() {
+		  $('form').submit(function() {
+		     alert(JSON.stringify($('form').serializeObject()));
+		    return false;
+		  });
+		});
+	});
+</script>
+</head>
+<body>
+<form>
+	<h2>
+		<a href="#" id="addScnt">Add Another Input Box</a>
+	</h2>
+
+	<div id="p_scents">
+		<p>
+			<label for="p_scnts"><input type="text" id="p_scnt" size="20"
+				name="p_scnt" value="" placeholder="Input Value" /></label>
+		</p>
+	</div>
+	<input type="submit" value="Submit" />
+</form>
+</body>
+</html>
