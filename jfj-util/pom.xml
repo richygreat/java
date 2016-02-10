@@ -19,7 +19,6 @@
 					<connectionType>developerConnection</connectionType>
 					<scmVersion>april16</scmVersion>
 					<scmVersionType>branch</scmVersionType>
-					<message>Committed</message>
 				</configuration>
 			</plugin>
 		</plugins>
