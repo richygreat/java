@@ -6,7 +6,7 @@
 	<scm>
 		<url>https://github.com/richygreat/java.git</url>
 		<developerConnection>scm:git:https://github.com/richygreat/java.git</developerConnection>
-    <tag>april16</tag>
+    <tag>april16-bugs</tag>
   </scm>
 
 	<build>
