@@ -26,7 +26,7 @@
 				<artifactId>maven-release-plugin</artifactId>
 				<version>2.5.3</version>
 				<configuration>
-					<branchName>april16</branchName>
+					<branchName>april16-immediate-1.0</branchName>
 				</configuration>
 			</plugin>
 		</plugins>
