@@ -2,11 +2,11 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.rg</groupId>
 	<artifactId>jfj-util</artifactId>
-	<version>1.2-SNAPSHOT</version>
+	<version>1.2</version>
 	<scm>
 		<url>https://github.com/richygreat/java.git</url>
 		<developerConnection>scm:git:https://github.com/richygreat/java.git</developerConnection>
-    <tag>april16</tag>
+    <tag>jfj-util-1.2</tag>
   </scm>
 
 	<build>
